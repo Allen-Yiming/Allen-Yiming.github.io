@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/Doubly_Linked_List_Node.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/spring-loaded_plate_dispenser.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/Queue.png">
-<meta property="og:updated_time" content="2019-09-14T06:49:44.636Z">
+<meta property="og:updated_time" content="2019-09-14T07:19:47.352Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithms Correctness and Efficiency Notes">
 <meta name="twitter:description" content="This is the first time I try markdown. Thanks to these authors and webs:https://blog.csdn.net/wordsin/article/details/79256035#39特殊符号https://blog.csdn.net/jyfu2_12/article/details/79207643https://www.">
@@ -188,7 +188,11 @@
 <li><a href="#3"></a></li>
 </ul>
 <h3 id="Algorithm-Correctness"><a href="#Algorithm-Correctness" class="headerlink" title="Algorithm Correctness"></a><h2 id="1">Algorithm Correctness</h2></h3><h4 id="Mathematical-Induction"><a href="#Mathematical-Induction" class="headerlink" title="Mathematical Induction"></a><h2 id="1.1">Mathematical Induction</h2></h4><p>In general, mathematical induction can be used to prove statements that assert that <em>P</em>(<em>n</em>) is true for all positive integers <em>n</em>, where <em>P</em>(<em>n</em>) is a propositional function.  </p>
-<p>Proofs using mathematical induction have two parts.<br>1.<strong>Basis Step</strong>: We show that the statement holds for the positive<br>integer 1 (i.e. <em>P</em>(1) is true).<br>2.<strong>Inductive Step</strong>: We show that if the statement holds for a positive integer then it must also hold for the next larger integer (i.e. for all positive integers k, if <em>P(k)</em> is true, then P(<em>k +</em> 1) is true).  </p>
+<p>Proofs using mathematical induction have two parts.  </p>
+<ul>
+<li><strong>Basis Step</strong>: We show that the statement holds for the positive<br>integer 1 (i.e. <em>P</em>(1) is true).  </li>
+<li><strong>Inductive Step</strong>: We show that if the statement holds for a positive integer then it must also hold for the next larger integer (i.e. for all positive integers k, if <em>P(k)</em> is true, then P(<em>k +</em> 1) is true).  </li>
+</ul>
 <h4 id="Partial-and-Total-Correctness"><a href="#Partial-and-Total-Correctness" class="headerlink" title="Partial and Total Correctness"></a><h2 id="1.2">Partial and Total Correctness</h2></h4><ul>
 <li><strong>Partial correctness</strong>: for <em>every</em> legal input <em>X</em> , if the algorithm terminates when run on <em>X</em>, then the specified relationship holds between <em>X</em> and the resulting output set.</li>
 <li><strong>Termination</strong>: the algorithm halts when run on any legal input.</li>
@@ -240,7 +244,7 @@
 </tr>
 </tbody></table>
 <hr>
-<h3 id="Definition-of-Abstract-Data-Types"><a href="#Definition-of-Abstract-Data-Types" class="headerlink" title="Definition of Abstract Data Types"></a>Definition of Abstract Data Types</h3><ol>
+<h3 id="Definition-of-Abstract-Data-Types"><a href="#Definition-of-Abstract-Data-Types" class="headerlink" title="Definition of Abstract Data Types"></a>Definition of Abstract Data Types</h3><ul>
 <li>An abstract data type is an abstraction of a data structure</li>
 <li>An ADT specifies:  <ul>
 <li>Data stored</li>
@@ -248,31 +252,127 @@
 <li>Error conditions associated with operations</li>
 </ul>
 </li>
-</ol>
-<h3 id="Linked-Lists-amp-Stacks-amp-Queues"><a href="#Linked-Lists-amp-Stacks-amp-Queues" class="headerlink" title="Linked Lists &amp; Stacks &amp; Queues"></a><h2 id="2">Linked Lists &amp; Stacks &amp; Queues</h2></h3><h4 id="Singly-Linked-Lists"><a href="#Singly-Linked-Lists" class="headerlink" title="Singly Linked Lists"></a><h2 id="2.1">Singly Linked Lists</h2></h4><ol>
+</ul>
+<h3 id="Linked-Lists-amp-Stacks-amp-Queues"><a href="#Linked-Lists-amp-Stacks-amp-Queues" class="headerlink" title="Linked Lists &amp; Stacks &amp; Queues"></a><h2 id="2">Linked Lists &amp; Stacks &amp; Queues</h2></h3><h4 id="Singly-Linked-Lists"><a href="#Singly-Linked-Lists" class="headerlink" title="Singly Linked Lists"></a><h2 id="2.1">Singly Linked Lists</h2></h4><ul>
 <li>A singly linked list is a <strong>concrete data structure</strong> consisting of a sequence of nodes,starting from a head pointer  </li>
 <li>Each node stores element and the link to the next node<br><img src="/assets/blogimg/Singly_Linked_List_Node.png" alt="Singly Linked List Node"> </li>
-</ol>
-<h4 id="Doubly-Linked-Lists"><a href="#Doubly-Linked-Lists" class="headerlink" title="Doubly Linked Lists"></a><h2 id="2.2">Doubly Linked Lists</h2></h4><ol>
+</ul>
+<h4 id="Doubly-Linked-Lists"><a href="#Doubly-Linked-Lists" class="headerlink" title="Doubly Linked Lists"></a><h2 id="2.2">Doubly Linked Lists</h2></h4><ul>
 <li>A doubly linked list can be traversed forward and backward</li>
 <li>Nodes store element &amp; the link to the previews node &amp; the link to the next node<br><img src="/assets/blogimg/Doubly_Linked_List_Node.png" alt="Doubly Linked List Node"> </li>
-</ol>
-<h4 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a><h2 id="2.3">Stacks</h2></h4><h3 id="The-Stack-ADT"><a href="#The-Stack-ADT" class="headerlink" title="The Stack ADT"></a>The Stack ADT</h3><ol>
+</ul>
+<h4 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a><h2 id="2.3">Stacks</h2></h4><h3 id="The-Stack-ADT"><a href="#The-Stack-ADT" class="headerlink" title="The Stack ADT"></a>The Stack ADT</h3><ul>
 <li>The Stack ADT stores arbitrary(武断的；随意的) objects</li>
 <li>Insertions and deletions dollow the <em>last-in first-out</em> scheme</li>
 <li>Think of a spring-loaded plate dispenser<br><img src="/assets/blogimg/spring-loaded_plate_dispenser.png" alt="spring-loaded plate dispenser"> </li>
 <li>Main stack operations:  <ul>
-<li>push(object): inserts an element</li>
-<li>object pop(): removes and returns the last inserted element</li>
-<li>int size()</li>
+<li>push(object): inserts an element  </li>
+<li>object pop(): removes and returns the last inserted element  </li>
+<li>int size()  </li>
+</ul>
+<ul>
 <li>boolean isEmpty()</li>
-<li>object pop(): returns the last inserted element without removing it  <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3>Method|Return Value|Stack Contents</li>
+<li>object pop(): returns the last inserted element without removing it<br>·<h3 id><a href="#" class="headerlink" title></a><example></example></h3></li>
 </ul>
 </li>
-</ol>
-<p>–|:–:|:–:<br>push(5)|-|(5)<br>push(3)|-|(5,3)<br>size()|2|(5,3)<br>pop()|3|(5)<br>isEmpty()|false|(5)<br>pop()|5|()<br>isEmpty()|true|()<br>pop()|null|()<br>push(7)|-|(7)<br>push(9)|-|(7,9)<br>top()|0|(7,9)<br>push(4)|-|(7,9,4)<br>size()|3|(7,9,4)<br>pop()|4(7,9)<br>push(6)|-|(7,9,6)<br>push(8)|-|(7,9,6,8)<br>pop()|8|(7,9,6)</p>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th align="center">Return Value</th>
+<th align="left">Stack Contents</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>push(5)</td>
+<td align="center">-</td>
+<td align="left">(5)</td>
+</tr>
+<tr>
+<td>push(3)</td>
+<td align="center">-</td>
+<td align="left">(5,3)</td>
+</tr>
+<tr>
+<td>size()</td>
+<td align="center">2</td>
+<td align="left">(5,3)</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td align="center">3</td>
+<td align="left">(5)</td>
+</tr>
+<tr>
+<td>isEmpty()</td>
+<td align="center">false</td>
+<td align="left">(5)</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td align="center">5</td>
+<td align="left">()</td>
+</tr>
+<tr>
+<td>isEmpty()</td>
+<td align="center">true</td>
+<td align="left">()</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td align="center">null</td>
+<td align="left">()</td>
+</tr>
+<tr>
+<td>push(7)</td>
+<td align="center">-</td>
+<td align="left">(7)</td>
+</tr>
+<tr>
+<td>push(9)</td>
+<td align="center">-</td>
+<td align="left">(7,9)</td>
+</tr>
+<tr>
+<td>top()</td>
+<td align="center">0</td>
+<td align="left">(7,9)</td>
+</tr>
+<tr>
+<td>push(4)</td>
+<td align="center">-</td>
+<td align="left">(7,9,4)</td>
+</tr>
+<tr>
+<td>size()</td>
+<td align="center">3</td>
+<td align="left">(7,9,4)</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td align="center">4(7,9)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>push(6)</td>
+<td align="center">-</td>
+<td align="left">(7,9,6)</td>
+</tr>
+<tr>
+<td>push(8)</td>
+<td align="center">-</td>
+<td align="left">(7,9,6,8)</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td align="center">8</td>
+<td align="left">(7,9,6)</td>
+</tr>
+</tbody></table>
 <hr>
-<h3 id="Application-of-Stacks"><a href="#Application-of-Stacks" class="headerlink" title="Application of Stacks"></a>Application of Stacks</h3><ol>
+<p>·</p>
+<h3 id="Application-of-Stacks"><a href="#Application-of-Stacks" class="headerlink" title="Application of Stacks"></a>Application of Stacks</h3><ul>
 <li>Direct applications:  <ul>
 <li>Page-visited history in a web browser</li>
 <li>Undo sequence in a text editor</li>
@@ -281,19 +381,23 @@
 </li>
 <li>Indirect applications:  <ul>
 <li>Auxiliary(辅助的) data structure for algorithms</li>
-<li>Component of other data structures</li>
+<li>Component of other data structures<br>·</li>
 </ul>
 </li>
-</ol>
-<h3 id="Array-based-Stack"><a href="#Array-based-Stack" class="headerlink" title="Array-based Stack"></a>Array-based Stack</h3><ol>
+</ul>
+<hr>
+<h3 id="Array-based-Stack"><a href="#Array-based-Stack" class="headerlink" title="Array-based Stack"></a>Array-based Stack</h3><ul>
 <li>A simple way of implementing the Stack ADT uses an array</li>
 <li>We add elemetns from left to right</li>
 <li>A variable keeps track of the index of the top element </li>
 <li>The array storing the stack elements may become full. A push operation will then throw a <strong>FULLSTACKEXCEPTION</strong><ul>
 <li>Limitation of the array-based implementation</li>
-<li>Not intrinsic(本身问题) to the Stack ADT<h4 id="Performance-and-Limitations"><a href="#Performance-and-Limitations" class="headerlink" title="Performance and Limitations"></a>Performance and Limitations</h4></li>
+<li>Not intrinsic(本身问题) to the Stack ADT<br>·</li>
 </ul>
 </li>
+</ul>
+<hr>
+<h4 id="Performance-and-Limitations"><a href="#Performance-and-Limitations" class="headerlink" title="Performance and Limitations"></a>Performance and Limitations</h4><ul>
 <li>Performance  <ul>
 <li>Let $n$ be the number of elements in the stack</li>
 <li>The space used is $O(n)$</li>
@@ -302,11 +406,12 @@
 </li>
 <li>Limitations<ul>
 <li>The maximum size of the stack must be defined a priority and cannot be changed</li>
-<li>Tying to push a new element into a full stack causes an implementation-specific exception</li>
+<li>Tying to push a new element into a full stack causes an implementation-specific exception<br>·</li>
 </ul>
 </li>
-</ol>
-<h4 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a><h2 id="2.4">Queues</h2></h4><h3 id="The-Queue-ADT"><a href="#The-Queue-ADT" class="headerlink" title="The Queue ADT"></a>The Queue ADT</h3><ol>
+</ul>
+<hr>
+<h4 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a><h2 id="2.4">Queues</h2></h4><h3 id="The-Queue-ADT"><a href="#The-Queue-ADT" class="headerlink" title="The Queue ADT"></a>The Queue ADT</h3><ul>
 <li>The Queue ADT stores arbitrary objects</li>
 <li>Insertions and deletions dollow the <em>first-in first-out</em> scheme</li>
 <li>Insertions are at the rear of the queue and removals are at the front of the queue</li>
@@ -315,9 +420,12 @@
 <li>object dequeue(): removes and returns the element at the front of the queue</li>
 <li>int size()</li>
 <li>boolean isEmpty()</li>
-<li>object first(): returns the last inserted element without removing it  <h3 id="Application-of-Queues"><a href="#Application-of-Queues" class="headerlink" title="Application of Queues"></a>Application of Queues</h3></li>
+<li>object first(): returns the last inserted element without removing it<br>·</li>
 </ul>
 </li>
+</ul>
+<hr>
+<h3 id="Application-of-Queues"><a href="#Application-of-Queues" class="headerlink" title="Application of Queues"></a>Application of Queues</h3><ul>
 <li>Direct applications:  <ul>
 <li>Waiting lists,bureaucracy(官僚)</li>
 <li>Access to shared resources(e.g., printer)</li>
@@ -326,9 +434,12 @@
 </li>
 <li>Indirect applications:  <ul>
 <li>Auxiliary(辅助的) data structure for algorithms</li>
-<li>Component of other data structures  <h3 id="Array-based-Queue"><a href="#Array-based-Queue" class="headerlink" title="Array-based Queue"></a>Array-based Queue</h3></li>
+<li>Component of other data structures<br>·</li>
 </ul>
 </li>
+</ul>
+<hr>
+<h3 id="Array-based-Queue"><a href="#Array-based-Queue" class="headerlink" title="Array-based Queue"></a>Array-based Queue</h3><ul>
 <li>Use an array of size $N$ in a circular fashion</li>
 <li>Two variables keep track of the front and size:<ul>
 <li>$f$ index of the front element</li>
@@ -336,7 +447,7 @@
 </ul>
 </li>
 <li>When the queue had fewer than $N$ elements, array location $r=(f+sz) mod N$ is the first empty slot past the rear of the queue<br><img src="/assets/blogimg/Queue.png" alt="Queue"></li>
-</ol>
+</ul>
 
       
 
@@ -409,11 +520,15 @@
   
 <nav id="article-nav">
   
-  
-    <a href="../hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
+    <a href="../hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
     </a>
+  
   
 </nav>
 
