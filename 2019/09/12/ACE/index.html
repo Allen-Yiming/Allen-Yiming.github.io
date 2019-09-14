@@ -18,7 +18,8 @@
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/Singly_Linked_List_Node.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/Doubly_Linked_List_Node.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/spring-loaded_plate_dispenser.png">
-<meta property="og:updated_time" content="2019-09-14T05:50:40.865Z">
+<meta property="og:image" content="http://yoursite.com/assets/blogimg/Queue.png">
+<meta property="og:updated_time" content="2019-09-14T06:49:44.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithms Correctness and Efficiency Notes">
 <meta name="twitter:description" content="This is the first time I try markdown. Thanks to these authors and webs:https://blog.csdn.net/wordsin/article/details/79256035#39特殊符号https://blog.csdn.net/jyfu2_12/article/details/79207643https://www.">
@@ -169,7 +170,7 @@
         <p>This is the first time I try markdown. Thanks to these authors and webs:<br><a href="https://blog.csdn.net/wordsin/article/details/79256035#39特殊符号" target="_blank" rel="noopener">https://blog.csdn.net/wordsin/article/details/79256035#39特殊符号</a><br><a href="https://blog.csdn.net/jyfu2_12/article/details/79207643" target="_blank" rel="noopener">https://blog.csdn.net/jyfu2_12/article/details/79207643</a><br><a href="https://www.codecogs.com/latex/eqneditor.php" target="_blank" rel="noopener">https://www.codecogs.com/latex/eqneditor.php</a><br><a href="https://blog.csdn.net/dss_dssssd/article/details/82959037#1" target="_blank" rel="noopener">https://blog.csdn.net/dss_dssssd/article/details/82959037#1</a><br><a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">https://www.jianshu.com/p/191d1e21f7ed</a></p>
 <hr>
 <a id="more"></a>
-<ul>
+<h2 id="Catalogue"><a href="#Catalogue" class="headerlink" title="Catalogue"></a>Catalogue</h2><ul>
 <li><a href="#1">Algorithm Correctness</a><ul>
 <li><a href="#1.1">Mathematical Induction</a></li>
 <li><a href="#1.2">Partial and Total Correctness</a></li>
@@ -305,6 +306,37 @@
 </ul>
 </li>
 </ol>
+<h4 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a><h2 id="2.4">Queues</h2></h4><h3 id="The-Queue-ADT"><a href="#The-Queue-ADT" class="headerlink" title="The Queue ADT"></a>The Queue ADT</h3><ol>
+<li>The Queue ADT stores arbitrary objects</li>
+<li>Insertions and deletions dollow the <em>first-in first-out</em> scheme</li>
+<li>Insertions are at the rear of the queue and removals are at the front of the queue</li>
+<li>Main stack operations:  <ul>
+<li>enqueue(object): inserts an element at the end of the queue</li>
+<li>object dequeue(): removes and returns the element at the front of the queue</li>
+<li>int size()</li>
+<li>boolean isEmpty()</li>
+<li>object first(): returns the last inserted element without removing it  <h3 id="Application-of-Queues"><a href="#Application-of-Queues" class="headerlink" title="Application of Queues"></a>Application of Queues</h3></li>
+</ul>
+</li>
+<li>Direct applications:  <ul>
+<li>Waiting lists,bureaucracy(官僚)</li>
+<li>Access to shared resources(e.g., printer)</li>
+<li>Multiprogramming</li>
+</ul>
+</li>
+<li>Indirect applications:  <ul>
+<li>Auxiliary(辅助的) data structure for algorithms</li>
+<li>Component of other data structures  <h3 id="Array-based-Queue"><a href="#Array-based-Queue" class="headerlink" title="Array-based Queue"></a>Array-based Queue</h3></li>
+</ul>
+</li>
+<li>Use an array of size $N$ in a circular fashion</li>
+<li>Two variables keep track of the front and size:<ul>
+<li>$f$ index of the front element</li>
+<li>$sz$ number of stored elements</li>
+</ul>
+</li>
+<li>When the queue had fewer than $N$ elements, array location $r=(f+sz) mod N$ is the first empty slot past the rear of the queue<br><img src="/assets/blogimg/Queue.png" alt="Queue"></li>
+</ol>
 
       
 
@@ -439,7 +471,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: true,
+		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
