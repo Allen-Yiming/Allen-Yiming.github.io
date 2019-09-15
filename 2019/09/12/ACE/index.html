@@ -19,7 +19,10 @@
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/Doubly_Linked_List_Node.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/spring-loaded_plate_dispenser.png">
 <meta property="og:image" content="http://yoursite.com/assets/blogimg/Queue.png">
-<meta property="og:updated_time" content="2019-09-14T07:19:47.352Z">
+<meta property="og:image" content="http://yoursite.com/assets/blogimg/Array_List_Insertion.png">
+<meta property="og:image" content="http://yoursite.com/assets/blogimg/Positional_List_Node.png">
+<meta property="og:image" content="http://yoursite.com/assets/blogimg/Positional_List.png">
+<meta property="og:updated_time" content="2019-09-15T10:58:17.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithms Correctness and Efficiency Notes">
 <meta name="twitter:description" content="This is the first time I try markdown. Thanks to these authors and webs:https://blog.csdn.net/wordsin/article/details/79256035#39特殊符号https://blog.csdn.net/jyfu2_12/article/details/79207643https://www.">
@@ -178,16 +181,46 @@
 </ul>
 </li>
 <li><a href="#2.01">Abstract Data Types vs. Concrete Data Structures(A table)</a></li>
-<li><a href="#2">Linked Lists &amp; Stacks &amp; Queues</a><ul>
+<li><a href="#2">Linked Lists &amp; Stacks &amp; Queues…(Data Structures)</a><ul>
 <li><a href="#2.1">Singly Linked Lists</a></li>
 <li><a href="#2.2">Doubly Linked Lists</a></li>
-<li><a href="#2.3">Stacks</a></li>
-<li><a href="#2.4">Queues</a></li>
+<li><a href="#2.3">Stacks</a><ul>
+<li><a href="#2.3.1">The Stack ADT</a></li>
+<li><a href="#2.3.2">Stack Operation Example</a></li>
+<li><a href="#2.3.3">Application of Stacks</a></li>
+<li><a href="#2.3.4">Array-based Stack</a><ul>
+<li><a href="#2.3.4.1">Performance and Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2.4">Queues</a><ul>
+<li><a href="#2.4.1">The Queue ADT</a></li>
+<li><a href="#2.4.2">Application of Queues</a></li>
+<li><a href="#2.4.3">Array-based Queue</a></li>
+</ul>
+</li>
+<li><a href="#2.5">List</a></li>
+<li><a href="#2.6">Array List</a><ul>
+<li><a href="#2.6.1">Insertion</a></li>
+<li><a href="#2.6.2">Element Removal</a></li>
+<li><a href="#2.6.3">Performance</a></li>
+<li><a href="#2.6.4">Growble Array-based Array List</a></li>
+<li><a href="#2.6.5">Comparison of the Strategies</a></li>
+<li><a href="#2.6.6">Incremental Stategy Analysis</a></li>
+<li><a href="#2.6.7">Doubling Strategy Analysis</a></li>
+</ul>
+</li>
+<li><a href="#2.7">Positional Lists</a><ul>
+<li><a href="#2.7.1">Positional List ADT</a></li>
+<li><a href="#2.7.2">Positional List Implementation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#3"></a></li>
 </ul>
-<h3 id="Algorithm-Correctness"><a href="#Algorithm-Correctness" class="headerlink" title="Algorithm Correctness"></a><h2 id="1">Algorithm Correctness</h2></h3><h4 id="Mathematical-Induction"><a href="#Mathematical-Induction" class="headerlink" title="Mathematical Induction"></a><h2 id="1.1">Mathematical Induction</h2></h4><p>In general, mathematical induction can be used to prove statements that assert that <em>P</em>(<em>n</em>) is true for all positive integers <em>n</em>, where <em>P</em>(<em>n</em>) is a propositional function.  </p>
+<h3 id="Algorithm-Correctness"><a href="#Algorithm-Correctness" class="headerlink" title="Algorithm Correctness"></a><h1 id="1">Algorithm Correctness</h1></h3><h4 id="Mathematical-Induction"><a href="#Mathematical-Induction" class="headerlink" title="Mathematical Induction"></a><h2 id="1.1">Mathematical Induction</h2></h4><p>In general, mathematical induction can be used to prove statements that assert that <em>P</em>(<em>n</em>) is true for all positive integers <em>n</em>, where <em>P</em>(<em>n</em>) is a propositional function.  </p>
 <p>Proofs using mathematical induction have two parts.  </p>
 <ul>
 <li><strong>Basis Step</strong>: We show that the statement holds for the positive<br>integer 1 (i.e. <em>P</em>(1) is true).  </li>
@@ -208,41 +241,44 @@
 <h3 id="Q-amp-A-Examples"><a href="#Q-amp-A-Examples" class="headerlink" title="Q&amp;A Examples"></a>Q&amp;A Examples</h3><ul>
 <li>$5n^2$ is $\Omega (n^2)$<br>$f(n)$ is $\Omega (g(n))$ if there is a constant $c &gt; 0$ and an integer constant $n_0\geq 1$<br>such that $f(n)\geq c g(n)$ for $n\geq n0$<br>let $c = 5$ and $n_0 = 1$</li>
 <li>$5n^2$ is $\Omega (n)$<br>$f(n)$ is $\Omega (g(n))$ if there is a constant $c &gt; 0$ and an integer constant $n_0\geq 1$<br>such that $f(n)\geq c g(n)$ for $n\geq n0$<br>let $c = 1$ and $n_0 = 1$</li>
-<li>$5n^2$ is $\Theta (n^2)$<br>$f(n)$ is $\Theta (g(n))$ if it is $\Omega (n2)$ and $O(n^2)$. We have already seen the former, for the latter recall that $f(n)$ is $O(g(n))$ if there is a constant $c &gt; 0$ and an integer constant $n_0\geq 1$ such that $f(n) &lt; c g(n)$ for $n\geq n_0$<br>let $c = 5$ and $n_0 = 1$</li>
+<li>$5n^2$ is $\Theta (n^2)$<br>$f(n)$ is $\Theta (g(n))$ if it is $\Omega (n2)$ and $O(n^2)$. We have already seen the former, for the latter recall that $f(n)$ is $O(g(n))$ if there is a constant $c &gt; 0$ and an integer constant $n_0\geq 1$ such that $f(n) &lt; c g(n)$ for $n\geq n_0$<br>let $c = 5$ and $n_0 = 1$  </li>
 </ul>
-<hr>
-<h3 id="Abstract-Data-Types-vs-Concrete-Data-Structures-A-table"><a href="#Abstract-Data-Types-vs-Concrete-Data-Structures-A-table" class="headerlink" title="Abstract Data Types vs. Concrete Data Structures(A table)"></a><h2 id="2.01">Abstract Data Types vs. Concrete Data Structures(A table)</h2></h3><table>
+<h3 id="Abstract-Data-Types-vs-Concrete-Data-Structures-A-table"><a href="#Abstract-Data-Types-vs-Concrete-Data-Structures-A-table" class="headerlink" title="Abstract Data Types vs. Concrete Data Structures(A table)"></a><h1 id="2.01">Abstract Data Types vs. Concrete Data Structures(A table)</h1></h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Abstract Data Type (ADT)</th>
-<th align="center">Concrete Data Structure</th>
+<th style="text-align:center">Concrete Data Structure</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Stack</td>
-<td align="center">Array</td>
+<td style="text-align:center">Array</td>
 </tr>
 <tr>
 <td>Queue</td>
-<td align="center">Singly Linked List</td>
+<td style="text-align:center">Singly Linked List</td>
 </tr>
 <tr>
 <td>List</td>
-<td align="center">Doubly Linked List</td>
+<td style="text-align:center">Doubly Linked List</td>
 </tr>
 <tr>
 <td>Position List</td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td>Tree</td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td>Binary Tree</td>
-<td align="center"></td>
+<td style="text-align:center"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <h3 id="Definition-of-Abstract-Data-Types"><a href="#Definition-of-Abstract-Data-Types" class="headerlink" title="Definition of Abstract Data Types"></a>Definition of Abstract Data Types</h3><ul>
 <li>An abstract data type is an abstraction of a data structure</li>
@@ -253,7 +289,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Linked-Lists-amp-Stacks-amp-Queues"><a href="#Linked-Lists-amp-Stacks-amp-Queues" class="headerlink" title="Linked Lists &amp; Stacks &amp; Queues"></a><h2 id="2">Linked Lists &amp; Stacks &amp; Queues</h2></h3><h4 id="Singly-Linked-Lists"><a href="#Singly-Linked-Lists" class="headerlink" title="Singly Linked Lists"></a><h2 id="2.1">Singly Linked Lists</h2></h4><ul>
+<h3 id="Linked-Lists-Stacks-Queues-Data-Structures"><a href="#Linked-Lists-Stacks-Queues-Data-Structures" class="headerlink" title="Linked Lists & Stacks & Queues...(Data Structures)"></a><h1 id="2">Linked Lists & Stacks & Queues...(Data Structures)</h1></h3><h4 id="Singly-Linked-Lists"><a href="#Singly-Linked-Lists" class="headerlink" title="Singly Linked Lists"></a><h2 id="2.1">Singly Linked Lists</h2></h4><ul>
 <li>A singly linked list is a <strong>concrete data structure</strong> consisting of a sequence of nodes,starting from a head pointer  </li>
 <li>Each node stores element and the link to the next node<br><img src="/assets/blogimg/Singly_Linked_List_Node.png" alt="Singly Linked List Node"> </li>
 </ul>
@@ -261,7 +297,7 @@
 <li>A doubly linked list can be traversed forward and backward</li>
 <li>Nodes store element &amp; the link to the previews node &amp; the link to the next node<br><img src="/assets/blogimg/Doubly_Linked_List_Node.png" alt="Doubly Linked List Node"> </li>
 </ul>
-<h4 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a><h2 id="2.3">Stacks</h2></h4><h3 id="The-Stack-ADT"><a href="#The-Stack-ADT" class="headerlink" title="The Stack ADT"></a>The Stack ADT</h3><ul>
+<h4 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a><h2 id="2.3">Stacks</h2></h4><h3 id="The-Stack-ADT"><a href="#The-Stack-ADT" class="headerlink" title="The Stack ADT"></a><h3 id="2.3.1">The Stack ADT</h3></h3><ul>
 <li>The Stack ADT stores arbitrary(武断的；随意的) objects</li>
 <li>Insertions and deletions dollow the <em>last-in first-out</em> scheme</li>
 <li>Think of a spring-loaded plate dispenser<br><img src="/assets/blogimg/spring-loaded_plate_dispenser.png" alt="spring-loaded plate dispenser"> </li>
@@ -272,107 +308,108 @@
 </ul>
 <ul>
 <li>boolean isEmpty()</li>
-<li>object pop(): returns the last inserted element without removing it<br>·<h3 id><a href="#" class="headerlink" title></a><example></example></h3></li>
+<li>object pop(): returns the last inserted element without removing it <h3 id="Stack-Operation-Example"><a href="#Stack-Operation-Example" class="headerlink" title="Stack Operation Example"></a><h3 id="2.3.3">Stack Operation Example</h3></h3></li>
 </ul>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
 <th>Method</th>
-<th align="center">Return Value</th>
-<th align="left">Stack Contents</th>
+<th style="text-align:center">Return Value</th>
+<th style="text-align:left">Stack Contents</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>push(5)</td>
-<td align="center">-</td>
-<td align="left">(5)</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">(5)</td>
 </tr>
 <tr>
 <td>push(3)</td>
-<td align="center">-</td>
-<td align="left">(5,3)</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">(5,3)</td>
 </tr>
 <tr>
 <td>size()</td>
-<td align="center">2</td>
-<td align="left">(5,3)</td>
+<td style="text-align:center">2</td>
+<td style="text-align:left">(5,3)</td>
 </tr>
 <tr>
 <td>pop()</td>
-<td align="center">3</td>
-<td align="left">(5)</td>
+<td style="text-align:center">3</td>
+<td style="text-align:left">(5)</td>
 </tr>
 <tr>
 <td>isEmpty()</td>
-<td align="center">false</td>
-<td align="left">(5)</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">(5)</td>
 </tr>
 <tr>
 <td>pop()</td>
-<td align="center">5</td>
-<td align="left">()</td>
+<td style="text-align:center">5</td>
+<td style="text-align:left">()</td>
 </tr>
 <tr>
 <td>isEmpty()</td>
-<td align="center">true</td>
-<td align="left">()</td>
+<td style="text-align:center">true</td>
+<td style="text-align:left">()</td>
 </tr>
 <tr>
 <td>pop()</td>
-<td align="center">null</td>
-<td align="left">()</td>
+<td style="text-align:center">null</td>
+<td style="text-align:left">()</td>
 </tr>
 <tr>
 <td>push(7)</td>
-<td align="center">-</td>
-<td align="left">(7)</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">(7)</td>
 </tr>
 <tr>
 <td>push(9)</td>
-<td align="center">-</td>
-<td align="left">(7,9)</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">(7,9)</td>
 </tr>
 <tr>
 <td>top()</td>
-<td align="center">0</td>
-<td align="left">(7,9)</td>
+<td style="text-align:center">0</td>
+<td style="text-align:left">(7,9)</td>
 </tr>
 <tr>
 <td>push(4)</td>
-<td align="center">-</td>
-<td align="left">(7,9,4)</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">(7,9,4)</td>
 </tr>
 <tr>
 <td>size()</td>
-<td align="center">3</td>
-<td align="left">(7,9,4)</td>
+<td style="text-align:center">3</td>
+<td style="text-align:left">(7,9,4)</td>
 </tr>
 <tr>
 <td>pop()</td>
-<td align="center">4(7,9)</td>
-<td align="left"></td>
+<td style="text-align:center">4(7,9)</td>
 </tr>
 <tr>
 <td>push(6)</td>
-<td align="center">-</td>
-<td align="left">(7,9,6)</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">(7,9,6)</td>
 </tr>
 <tr>
 <td>push(8)</td>
-<td align="center">-</td>
-<td align="left">(7,9,6,8)</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">(7,9,6,8)</td>
 </tr>
 <tr>
 <td>pop()</td>
-<td align="center">8</td>
-<td align="left">(7,9,6)</td>
+<td style="text-align:center">8</td>
+<td style="text-align:left">(7,9,6)</td>
 </tr>
-</tbody></table>
-<hr>
-<p>·</p>
-<h3 id="Application-of-Stacks"><a href="#Application-of-Stacks" class="headerlink" title="Application of Stacks"></a>Application of Stacks</h3><ul>
+</tbody>
+</table>
+</div>
+<h3 id="Application-of-Stacks"><a href="#Application-of-Stacks" class="headerlink" title="Application of Stacks"></a><h3 id="2.3.3">Application of Stacks</h3></h3><ul>
 <li>Direct applications:  <ul>
 <li>Page-visited history in a web browser</li>
 <li>Undo sequence in a text editor</li>
@@ -381,23 +418,21 @@
 </li>
 <li>Indirect applications:  <ul>
 <li>Auxiliary(辅助的) data structure for algorithms</li>
-<li>Component of other data structures<br>·</li>
+<li>Component of other data structures</li>
 </ul>
 </li>
 </ul>
-<hr>
-<h3 id="Array-based-Stack"><a href="#Array-based-Stack" class="headerlink" title="Array-based Stack"></a>Array-based Stack</h3><ul>
+<h3 id="Array-based-Stack"><a href="#Array-based-Stack" class="headerlink" title="Array-based Stack"></a><h3 id="2.3.4">Array-based Stack</h3></h3><ul>
 <li>A simple way of implementing the Stack ADT uses an array</li>
 <li>We add elemetns from left to right</li>
 <li>A variable keeps track of the index of the top element </li>
 <li>The array storing the stack elements may become full. A push operation will then throw a <strong>FULLSTACKEXCEPTION</strong><ul>
 <li>Limitation of the array-based implementation</li>
-<li>Not intrinsic(本身问题) to the Stack ADT<br>·</li>
+<li>Not intrinsic(本身问题) to the Stack ADT  </li>
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="Performance-and-Limitations"><a href="#Performance-and-Limitations" class="headerlink" title="Performance and Limitations"></a>Performance and Limitations</h4><ul>
+<h3 id="Performance-and-Limitations"><a href="#Performance-and-Limitations" class="headerlink" title="Performance and Limitations"></a><h4 id="2.3.4.1">Performance and Limitations</h4></h3><ul>
 <li>Performance  <ul>
 <li>Let $n$ be the number of elements in the stack</li>
 <li>The space used is $O(n)$</li>
@@ -406,26 +441,24 @@
 </li>
 <li>Limitations<ul>
 <li>The maximum size of the stack must be defined a priority and cannot be changed</li>
-<li>Tying to push a new element into a full stack causes an implementation-specific exception<br>·</li>
+<li>Tying to push a new element into a full stack causes an implementation-specific exception</li>
 </ul>
 </li>
 </ul>
-<hr>
-<h4 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a><h2 id="2.4">Queues</h2></h4><h3 id="The-Queue-ADT"><a href="#The-Queue-ADT" class="headerlink" title="The Queue ADT"></a>The Queue ADT</h3><ul>
+<h4 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a><h2 id="2.4">Queues</h2></h4><h3 id="The-Queue-ADT"><a href="#The-Queue-ADT" class="headerlink" title="The Queue ADT"></a><h3 id="2.4.1">The Queue ADT</h3></h3><ul>
 <li>The Queue ADT stores arbitrary objects</li>
 <li>Insertions and deletions dollow the <em>first-in first-out</em> scheme</li>
 <li>Insertions are at the rear of the queue and removals are at the front of the queue</li>
-<li>Main stack operations:  <ul>
+<li>Main queue operations:  <ul>
 <li>enqueue(object): inserts an element at the end of the queue</li>
 <li>object dequeue(): removes and returns the element at the front of the queue</li>
 <li>int size()</li>
 <li>boolean isEmpty()</li>
-<li>object first(): returns the last inserted element without removing it<br>·</li>
+<li>object first(): returns the last inserted element without removing it  </li>
 </ul>
 </li>
 </ul>
-<hr>
-<h3 id="Application-of-Queues"><a href="#Application-of-Queues" class="headerlink" title="Application of Queues"></a>Application of Queues</h3><ul>
+<h3 id="Application-of-Queues"><a href="#Application-of-Queues" class="headerlink" title="Application of Queues"></a><h3 id="2.4.2">Application of Queues</h3></h3><ul>
 <li>Direct applications:  <ul>
 <li>Waiting lists,bureaucracy(官僚)</li>
 <li>Access to shared resources(e.g., printer)</li>
@@ -434,20 +467,104 @@
 </li>
 <li>Indirect applications:  <ul>
 <li>Auxiliary(辅助的) data structure for algorithms</li>
-<li>Component of other data structures<br>·</li>
+<li>Component of other data structures  </li>
 </ul>
 </li>
 </ul>
-<hr>
-<h3 id="Array-based-Queue"><a href="#Array-based-Queue" class="headerlink" title="Array-based Queue"></a>Array-based Queue</h3><ul>
+<h3 id="Array-based-Queue"><a href="#Array-based-Queue" class="headerlink" title="Array-based Queue"></a><h3 id="2.4.3">Array-based Queue</h3></h3><ul>
 <li>Use an array of size $N$ in a circular fashion</li>
 <li>Two variables keep track of the front and size:<ul>
 <li>$f$ index of the front element</li>
 <li>$sz$ number of stored elements</li>
 </ul>
 </li>
-<li>When the queue had fewer than $N$ elements, array location $r=(f+sz) mod N$ is the first empty slot past the rear of the queue<br><img src="/assets/blogimg/Queue.png" alt="Queue"></li>
+<li>When the queue had fewer than $N$ elements, array location $r=(f+sz) mod N$ is the first empty slot past the rear of the queue<br><img src="/assets/blogimg/Queue.png" alt="Queue">  </li>
 </ul>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a><h2 id="2.5">List</h2></h4><h3 id="List-ADT"><a href="#List-ADT" class="headerlink" title="List ADT"></a>List ADT</h3><p>Main list operations: </p>
+<ul>
+<li>size(): Return the number of elements in the list.</li>
+<li>isEmpty(): Return a boolean indicating whether thelist is empty.</li>
+<li>get(i): Return the element of the list having index i; an error condition occurs if $i$ is not in range $[0,size()-1]$.</li>
+<li>set(i,e): Replaces the element at index $i$ with $e$, and returns the old element that was replaced; an error condition occurs if $i$ is not in range $[0,size()-1]$.</li>
+<li>add(i,e): Inserts a new element at index $i$, moving all subsequent elements one index ealier in the list; an error condition occurs if $i$ is not in range $[0,size()-1]$.</li>
+</ul>
+<h4 id="Array-Lists"><a href="#Array-Lists" class="headerlink" title="Array Lists"></a><h2 id="2.6">Array Lists</h2></h4><ul>
+<li>An obvious choice for implementing the list ADT is to use an array, <strong>A</strong>, where <strong>A[i]</strong> stores (a reference to) the element with index <strong>i</strong>.</li>
+<li>With a representation based on an array <strong>A</strong>, the get(i) and set(i,e) methods are easy to implement by accessing A<a href="assuming i is a legitimate index">i</a>.</li>
+</ul>
+<h3 id="Insertion"><a href="#Insertion" class="headerlink" title="Insertion"></a><h3 id="2.6.1">Insertion</h3></h3><ul>
+<li>In an operation add(i,e), we need to make room for the new element by shifting forward the $n-1$ elements $A[i], …, A[n-1]$  </li>
+<li>In the worst case (i=0), this takes $O(n)$ time<br><img src="/assets/blogimg/Array_List_Insertion.png" alt="Array List Insertion">  </li>
+</ul>
+<h3 id="Element-Removal"><a href="#Element-Removal" class="headerlink" title="Element Removal"></a><h3 id="2.6.2">Element Removal</h3></h3><ul>
+<li>In an operation <strong>remove(i)</strong>, we need to fill the hole left by the removed element by shifting backward the $n-i-1$ element $A[i+1], …, A[n-1]$</li>
+<li>In the worst case (i=0), this takes <strong>$O(n)$</strong> time  </li>
+</ul>
+<h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a><h3 id="2.6.3">Performance</h3></h3><ul>
+<li>In an array-based implementation of a dynamic list:<ul>
+<li>The space used by the data structure is $O(n)$</li>
+<li>Indexing the element at i takes $O(1)$ time</li>
+<li><em>add</em> and <em>remove</em> run in O(n) time</li>
+</ul>
+</li>
+<li>In an <em>add</em> operation, when the array is full, instead of throwing an exception, we can replace the array with a larger one …  </li>
+</ul>
+<h3 id="Growble-Array-based-Array-List"><a href="#Growble-Array-based-Array-List" class="headerlink" title="Growble Array-based Array List"></a><h3 id="2.6.4">Growble Array-based Array List</h3></h3><ul>
+<li>Let <strong>push(o)</strong> be the operation that adds element o at the end of the list</li>
+<li>When the array is full, we replace the array with a larger one</li>
+<li>How large should the new array be?<ul>
+<li><strong>Incremental strategy</strong>: increase the size by a constant c</li>
+<li><strong>Doubling strategy</strong>: double the size  </li>
+</ul>
+</li>
+</ul>
+<h3 id="Comparison-of-the-Strategies"><a href="#Comparison-of-the-Strategies" class="headerlink" title="Comparison of the Strategies"></a><h3 id="2.6.5">Comparison of the Strategies</h3></h3><ul>
+<li>We compare the incremental strategy and the doubling strategy by analyzing the total time $T(n)$ needed to perform a series of n push operations</li>
+<li>We assume that <strong>we start with an empty list represented by a growabe array of size 1</strong></li>
+<li>We call <strong>amortized time</strong> of a push operation the average time taken by a push operation over the series of operations, i.e., $T(n)/n$  </li>
+</ul>
+<h3 id="Incremental-Stategy-Analysis"><a href="#Incremental-Stategy-Analysis" class="headerlink" title="Incremental Stategy Analysis"></a><h3 id="2.6.6">Incremental Stategy Analysis</h3></h3><ul>
+<li>Over npush operatoins, We replace the array $k = n/c$ times, where $c$ is a constant</li>
+<li>The total time $T(n)$ of a series of n push operations is proportional to<br>$n + c + 2c + 3c + 4c + … + kc =$<br>$n + c(1 + 2 + 3 + … + k) =$<br>$n + ck(k + 1)/2  </li>
+<li>Since c is a constant, $T(n)$ is $O(n+k^2)$, i.e., $O(n^2)$  </li>
+<li>Thus, the amortized time of a push operation is $O(n)$  </li>
+</ul>
+<h3 id="Doubling-Strategy-Analysis"><a href="#Doubling-Strategy-Analysis" class="headerlink" title="Doubling Strategy Analysis"></a><h3 id="2.6.7">Doubling Strategy Analysis</h3></h3><ul>
+<li>We replace the array $k = log_2 n$ times</li>
+<li>The total time $T(n)$ of a series of n push operatins is proportional to<br>$n + 1 + 2 + 4 + 8 + … + 2^k =$<br>$n + 2^{k + 1} - 1 =$<br>$3n - 1$  </li>
+<li>$T(n)$ is $O(n)$  </li>
+<li>The amortized time of a push operation is O(1)  </li>
+</ul>
+<h4 id="Positional-Lists"><a href="#Positional-Lists" class="headerlink" title="Positional Lists"></a><h2 id="2.7">Positional Lists</h2></h4><ul>
+<li>To provide for a general abstraction of a sequence of elements with the ability to identify the location of an element, we define a positional list ADT.</li>
+<li>A position acts as a marker or token within the broader positional list.</li>
+<li>A position p is unaffected by changes elsewhere in a list; the only way in which a position becomes incalid is if an explicit(详细的；明确的) command is issued to delete it.</li>
+<li>A position instance is a simple object, supporting only the following methid:<ul>
+<li>P.getElement(): Return the element stored at position p.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Positional-List-ADT"><a href="#Positional-List-ADT" class="headerlink" title="Positional List ADT"></a><h3 id="2.7.1">Positional List ADT</h3></h3><ul>
+<li>Accessor methods:<ul>
+<li>first(): Returns the position of the first element of L(or null if empty).</li>
+<li>last(): Returns the position of the last element of L(or null if empty).</li>
+<li>before(p): Returns the position of L immediately before position p (or null if p is the first position).</li>
+<li>after(p): Returns the position of L immediately after position p (or null if p is the last position).</li>
+<li>isEmpty(): Returns true if list L does not contain any elements.</li>
+<li>size(): Returns the number of elements in list L.</li>
+</ul>
+</li>
+<li>Update methods:<ul>
+<li>addFirst(e): Inserts a new element e at the front of the list, returning the position of the new element.</li>
+<li>addLast(e): Inserts a new element e at the back of the list, returning the position of the new element.</li>
+<li>addBefore(p, e): Inserts a new element e in the list, just before position p, returning the position of the new element.</li>
+<li>addAfter(p, e): Inserts a new element e in the list, just after position p, returning the position of the new element.</li>
+<li>set(p, e): Replaces the element at position p with element e, returning the element formerly at position p.</li>
+<li>remove(p): Removes and returns the element at position p in the list, incalidating the position.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Positional-List-Implementation"><a href="#Positional-List-Implementation" class="headerlink" title="Positional List Implementation"></a><h3 id="2.7.2">Positional List Implementation</h3></h3><p>The most natural way to implement a positional list is with a doubly-linked list.<br><img src="/assets/blogimg/Positional_List_Node.png" alt="Positional List Node"><br><img src="/assets/blogimg/Positional_List.png" alt="Positional List">  </p>
 
       
 
